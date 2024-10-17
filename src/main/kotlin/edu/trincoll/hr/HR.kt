@@ -1,5 +1,6 @@
 package edu.trincoll.hr
 
+
 // The HR class should have:
 //   - a list of employees
 //   - a hire method that takes an employee and returns a new HR object with that employee added
@@ -7,4 +8,15 @@ package edu.trincoll.hr
 //   - a payEmployees method that returns the total pay of all employees
 class HR(private val employees: List<Employee> = emptyList()) {
 
+    fun hire(employee: Employee): HR {
+        return HR(employees + employee)
+    }
+
+    fun fire(id: Int): HR {
+        return HR(employees.filter { it.id != id })
+    }
+
+    fun payEmployees(): Double {
+        return employees.sumOf { it.pay() }
+    }
 }
